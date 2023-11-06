@@ -26,10 +26,7 @@ describe('Criando cenário de teste para o site globalsqa', () => {
 
   it('Caso de teste: Realizando login com sucesso', () => {
     let info = createUser();
-
-    cy.get('#username').type(info[0])
-    cy.get('#password').type(info[1])
-    cy.get('.btn-primary').click()
+    cy.login(info[0], info[1])
     cy.get('h1.ng-binding').should('contain.text', info[0])
  })
 
@@ -53,6 +50,15 @@ describe('Criando cenário de teste para o site globalsqa', () => {
   cy.get('.btn').click()
   cy.get('h2').should('have.text', 'Login')
  })
+
+ it('Caso de teste: Deletar usuário com sucesso', () => {
+  let info = createUser();
+  cy.login(info[0], info[1])
+  cy.get('.ng-binding > a').click()
+  cy.get('.btn').click()
+  cy.login(info[0], info[1])
+  cy.get('.ng-binding').should('have.text', 'Username or password is incorrect')
+})
 })
 
 

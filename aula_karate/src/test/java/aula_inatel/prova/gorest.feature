@@ -2,7 +2,6 @@ Feature: Testando API Gorest
 
 Background: Executa antes de cada teste
         * def url_base = 'https://gorest.co.in/public/v2'
-        * def request_json = read("json_teste.json")
 
 Scenario: Obter lista de usuários
         Given url url_base
